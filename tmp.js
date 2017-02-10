@@ -104,18 +104,20 @@ console.log(fizzbuzz(test))
  words and returns the longest word.
  * i.e. findLongestWord("a book full of dogs") should return "book"
  */
-var findLongestWord = function(str) {
-     var word = str.split(' ')
-    for(var i = 0; i < word.length; i++) {
-         for(var j = 1; j < word.length; j++){
-      if(word[i].length > word[j].length){
-        return word[i]
-    }
+var findLongestWord = function (str) {
+    
+    var newStr = str.split(/\W+/)
+    var longestWord = ''
+    longestWord = newStr[0]
+    
+    for(var i = 0; i < newStr.length; i = i + 1)
+        if(longestWord.length < newStr[i].length) {                 
+          longestWord = newStr[i]
+                    }
+     return longestWord
 }
-}
-}
-console.log(findLongestWord('a book full of dogs'))
 
+console.log(findLongestWord('the books loooks fine loveee'))
 /**
  * PART 6
  *
