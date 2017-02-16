@@ -12,8 +12,8 @@ var sumOfArray = function(numbersArray) {
     var totalSum = 0
    for(var i = 0; i < numbersArray.length; i++) {
         totalSum = totalSum += (numbersArray[i])
-        return totalSum
      }
+     return totalSum
 }   
 console.log(sumOfArray(testArray))
 
@@ -24,9 +24,18 @@ console.log(sumOfArray(testArray))
 // numbers as an argument and returns the highest number in the array.
 
 var maxOfArray = function(input) {
-    return Math.max.apply(null,input)
+  var largest = 0
+  for(var i=0; i< input.length; i++) {
+    if(input[i] > largest) {
+      largest = input[i]
+    }
+    else if(isNaN(input[i])) {
+      return isNaN 
+    }
+     return largest
+  }
 }
-console.log(maxOfArray([9,2,7,0,3]))
+console.log(maxOfArray([7,3,9]))
 
 /**
  * PART 2
@@ -36,14 +45,17 @@ console.log(maxOfArray([9,2,7,0,3]))
  */
 
  var isVowel = function (char){
-    if(char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u'){
-    return true
+   var vowels = ['a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U']
+
+   for(var i=0; i<vowels.length; i++) {
+    if(char === vowels[i]) {
+      return true
     }
-    else {
+  }
         return false
-    }
-}
-console.log(isVowel('a'))
+  }
+
+// console.log(isVowel('a'))
 
 
 /**
@@ -55,12 +67,12 @@ console.log(isVowel('a'))
  * string "books".
  */
 
-var reverseStr = function(input) {
+var reverse = function(input) {
     var output = input.split('').reverse().join('')
     return output
 }
 
-console.log(reverseStr('koob'))
+console.log(reverse('koob'))
 
 
 
@@ -78,24 +90,28 @@ console.log(reverseStr('koob'))
  */
 
 
- var test = 15
-
 var fizzbuzz = function (numStr) {
-    if(numStr % 3 != 0 && numStr % 5 != 0){
-        return '.' 
+    var saveString = ""
+    for(var i = 1; i <= numStr; i += 1){
+      if( i % 3 !== 0 && i % 5 !== 0){
+        saveString = saveString + "."
+      }
+      else if(i % 3 === 0 || i % 5 !== 0){
+        saveString = saveString + 'fizz'
+      }
+      else if (i % 5 === 0 || i % 3 !== 0 ) {
+        saveString = saveString + 'buzz'
+      }
+      else if (i % 3 === 0 && i % 5 === 0) {
+        saveString = saveString + 'fizzbuzz'
+      }
+      else {
+        return null
+      }
     }
-    else if (numStr % 3 === 0 && numStr % 5 === 0) {
-        return 'fizzbuzz'
-    }
-    else if (numStr % 3 === 0) {
-         return 'fizz'        
-    }
-    else{
-         return 'buzz'
-    }
+    return saveString
 }
 
-console.log(fizzbuzz(test))
 
 /**
  * Part 5
@@ -132,11 +148,11 @@ console.log(findLongestWord('the books loooks fine loveee'))
 	      for (var j = 1; j <= num2; j++) {
 		    if (num2 % j === 0 && i === j){
 		      grtCommDen = j
-        return grtCommDen
         }
     }
   }
- }                 
+ }       
+ return grtCommDen          
 }  
 
 console.log(GCD(12, 30))
